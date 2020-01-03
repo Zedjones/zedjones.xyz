@@ -1,15 +1,15 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import Resume from './Resume';
+import Resume from './Resume/Resume';
 import Grid from '@material-ui/core/Grid';
-import './App.css';
+import { hot } from 'react-hot-loader/root';
 
-export default function App() {
+function App() {
   const [currPage, setPage] = React.useState("resume")
 
   return (
     <div>
-      <Sidebar pageChange={setPage.bind(this)}></Sidebar>
+      <Sidebar pageChange={setPage}></Sidebar>
       <Grid
         container
         spacing={0}
@@ -18,8 +18,10 @@ export default function App() {
         justify="center"
         style={{ minHeight: '100vh', paddingTop: '10vh' }}
       >
-        { currPage === 'resume' ? <Resume /> : null}
+        {currPage === 'resume' ? <Resume /> : null}
       </Grid>
     </div>
   );
 }
+
+export default hot(App);

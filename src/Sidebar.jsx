@@ -132,19 +132,19 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-            <ListItem button key='About me' onClick={props.pageChange("about-me")}>
+            <ListItem button key='About me' onClick={() => props.pageChange("about-me")}>
               <ListItemIcon><QuestionAnswer /></ListItemIcon>
               <ListItemText primary={'About me'} />
             </ListItem>
-            <ListItem button key='Projects'>
+            <ListItem button key='Projects' onClick={() => props.pageChange("projects")}>
               <ListItemIcon><Assignment /></ListItemIcon>
               <ListItemText primary={'Projects'} />
             </ListItem>
-            <ListItem button key='Resume' onClick={props.pageChange("resume")}>
+            <ListItem button key='Resume' onClick={() => props.pageChange("resume")}>
               <ListItemIcon><Description /></ListItemIcon>
               <ListItemText primary={'Resume'} />
             </ListItem>
-            <ListItem button key='Contact Info'>
+            <ListItem button key='Contact Info' onClick={() => props.pageChange("contact-info")}>
               <ListItemIcon><ContactMail /></ListItemIcon>
               <ListItemText primary={'Contact Info'} />
             </ListItem>

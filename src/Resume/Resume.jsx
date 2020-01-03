@@ -5,10 +5,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export default class Resume extends Component {
-    state = {
-        file: resumePdf,
-        numPages: null
-    }
+    state = { file: resumePdf }
 
     onFileChange = (event) => {
         this.setState({
@@ -16,15 +13,11 @@ export default class Resume extends Component {
         })
     }
 
-    onDocumentLoadSuccess = ({ numPages }) => {
-        this.setState({ numPages });
-    }
-
     render() {
-        const { file, numPages } = this.state;
+        const file = this.state.file;
 
         return (
-            <Document file={file} onLoadSuccess={this.onDocumentLoadSuccess}>
+            <Document file={file}>
                 <Page pageNumber={1} scale={2.0}/>
             </Document>
         )
