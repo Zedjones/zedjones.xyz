@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,6 +19,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Assignment from '@material-ui/icons/Assignment';
 import ContactMail from '@material-ui/icons/ContactMail';
+import Description from '@material-ui/icons/Description';
 
 const drawerWidth = 240;
 
@@ -77,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -130,13 +132,17 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-            <ListItem button key='About me'>
+            <ListItem button key='About me' onClick={props.pageChange("about-me")}>
               <ListItemIcon><QuestionAnswer /></ListItemIcon>
               <ListItemText primary={'About me'} />
             </ListItem>
             <ListItem button key='Projects'>
               <ListItemIcon><Assignment /></ListItemIcon>
               <ListItemText primary={'Projects'} />
+            </ListItem>
+            <ListItem button key='Resume' onClick={props.pageChange("resume")}>
+              <ListItemIcon><Description /></ListItemIcon>
+              <ListItemText primary={'Resume'} />
             </ListItem>
             <ListItem button key='Contact Info'>
               <ListItemIcon><ContactMail /></ListItemIcon>
@@ -152,4 +158,8 @@ export default function PersistentDrawerLeft() {
       </main>
     </div>
   );
+}
+
+PersistentDrawerLeft.propTypes = {
+  pageChange: PropTypes.func.isRequired
 }
