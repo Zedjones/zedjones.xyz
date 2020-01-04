@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Resume from './Resume/Resume';
 import Grid from '@material-ui/core/Grid';
-import ProjectCard from './Projects/ProjectCard';
+import ProjectGrid from './Projects/ProjectGrid';
 import { hot } from 'react-hot-loader/root';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         style={{ minHeight: '100vh', paddingTop: '10vh' }}
       >
         {currPage === 'resume' ? <Resume /> : null}
-        {currPage === 'projects' ? <ProjectCard /> : null}
+        {currPage === 'projects' ? <ProjectGrid /> : null}
       </Grid>
     </div>
   );

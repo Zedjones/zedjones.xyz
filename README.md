@@ -1,6 +1,6 @@
-# empty-project
+# zedjones.xyz
 
-Empty project.
+My personal website
 
 ## Building and running on localhost
 
