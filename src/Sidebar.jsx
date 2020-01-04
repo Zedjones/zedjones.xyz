@@ -80,9 +80,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
+  const nameToInd = {
+    "about-me": 0,
+    "projects": 1,
+    "resume": 2,
+    "contact-info": 3
+  }
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [selectedIndex, setSelectedIndex] = React.useState(nameToInd[props.currPage]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -91,6 +99,11 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleListItemClick = (name) => {
+    setSelectedIndex(nameToInd[name]);
+    props.pageChange(name);
+  }
 
   return (
     <div className={classes.root}>
@@ -132,19 +145,35 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-            <ListItem button key='About me' onClick={() => props.pageChange("about-me")}>
+            <ListItem 
+              button key='About me' 
+              selected={selectedIndex == nameToInd["about-me"]}
+              onClick={() => handleListItemClick("about-me")}
+            >
               <ListItemIcon><QuestionAnswer /></ListItemIcon>
               <ListItemText primary={'About me'} />
             </ListItem>
-            <ListItem button key='Projects' onClick={() => props.pageChange("projects")}>
+            <ListItem 
+              button key='Projects' 
+              selected={selectedIndex == nameToInd["projects"]}
+              onClick={() => handleListItemClick("projects")}
+            >
               <ListItemIcon><Assignment /></ListItemIcon>
               <ListItemText primary={'Projects'} />
             </ListItem>
-            <ListItem button key='Resume' onClick={() => props.pageChange("resume")}>
+            <ListItem 
+              button key='Resume'
+              selected={selectedIndex == nameToInd["resume"]} 
+              onClick={() => handleListItemClick("resume")}
+            >
               <ListItemIcon><Description /></ListItemIcon>
               <ListItemText primary={'Resume'} />
             </ListItem>
-            <ListItem button key='Contact Info' onClick={() => props.pageChange("contact-info")}>
+            <ListItem 
+              button key='Contact Info' 
+              selected={selectedIndex == nameToInd["contact-info"]}
+              onClick={() => handleListItemClick("contact-info")}
+            >
               <ListItemIcon><ContactMail /></ListItemIcon>
               <ListItemText primary={'Contact Info'} />
             </ListItem>
@@ -161,5 +190,6 @@ export default function PersistentDrawerLeft(props) {
 }
 
 PersistentDrawerLeft.propTypes = {
-  pageChange: PropTypes.func.isRequired
+  pageChange: PropTypes.func.isRequired,
+  //currPage: PropTypes.string.isRequired
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Resume from './Resume/Resume';
 import Grid from '@material-ui/core/Grid';
+import ProjectCard from './Projects/ProjectCard';
 import { hot } from 'react-hot-loader/root';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <Sidebar pageChange={setPage}></Sidebar>
+      <Sidebar pageChange={setPage} currPage={currPage}></Sidebar>
       <Grid
         container
         spacing={0}
@@ -19,6 +20,7 @@ function App() {
         style={{ minHeight: '100vh', paddingTop: '10vh' }}
       >
         {currPage === 'resume' ? <Resume /> : null}
+        {currPage === 'projects' ? <ProjectCard /> : null}
       </Grid>
     </div>
   );

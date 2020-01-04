@@ -1,8 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import resumePdf from './Resume.pdf';
-import { Document, Page, pdfjs } from 'react-pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import { Document, Page } from 'react-pdf';
 
 export default class Resume extends Component {
     state = { file: resumePdf }
