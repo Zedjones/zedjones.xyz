@@ -25,7 +25,7 @@ function App() {
         justify="center"
         style={{ minHeight: '100vh', paddingTop: '10vh' }}
       >
-        {currPage === 'resume' ? <Resume /> : null}
+        <Resume isVisible={currPage === "resume"} />
         {currPage === 'projects' ? <ProjectGrid /> : null}
       </Grid>
     </div>

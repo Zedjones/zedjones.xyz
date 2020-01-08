@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function ResponsiveDrawer(props) {
+export default function ResponsiveDrawer(props) {
     const nameToInd = {
         "about-me": 0,
         "projects": 1,
@@ -133,7 +133,7 @@ function ResponsiveDrawer(props) {
                     </IconButton>
                     <Typography variant="h6" noWrap>
                         Nicholas Jones - Software Engineer
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
@@ -177,5 +177,3 @@ ResponsiveDrawer.propTypes = {
     mobileOpen: PropTypes.bool.isRequired,
     setMobileOpen: PropTypes.func.isRequired
 }
-
-export default ResponsiveDrawer;
